@@ -1,5 +1,5 @@
 package com.application.cms.ExtraModels.Models;
 
 public enum Role {
-    ADMIN,STUDENT,TEACHER
+    ADMIN,STUDENT,TEACHER,DEVELOPER
 }

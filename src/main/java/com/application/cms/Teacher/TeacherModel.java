@@ -32,8 +32,12 @@ public class TeacherModel {
     @JoinTable(name = "user_addresses",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "address_id"))
-
-    private List<Address> student_address = new ArrayList<>();
+    private List<Address> teacher_address = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_authorities",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    private List<Address> teacher_authorities = new ArrayList<>();
     @Transient
     int age;
 

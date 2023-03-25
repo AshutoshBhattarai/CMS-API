@@ -21,7 +21,7 @@ public class UserModel {
     UUID user_id;
     @Column(unique = true,nullable = false)
     String username;
-    @Column(unique = true,nullable = false)
+    @Column(nullable = false)
     String password;
     @Column(unique = true,nullable = false)
     String email;
@@ -29,7 +29,4 @@ public class UserModel {
     Long phone;
     @Enumerated(EnumType.STRING)
     Role role = Role.STUDENT;
-
-
-
 }

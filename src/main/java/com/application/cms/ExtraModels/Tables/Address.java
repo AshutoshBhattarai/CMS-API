@@ -1,6 +1,7 @@
 package com.application.cms.ExtraModels.Tables;
 
 import com.application.cms.Student.StudentModel;
+import com.application.cms.Teacher.TeacherModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +25,6 @@ public class Address {
     String state;
     @ManyToMany(mappedBy = "student_address")
     List<StudentModel> students = new ArrayList<>();
-
+    @ManyToMany(mappedBy = "teacher_address")
+    List<TeacherModel> teachers = new ArrayList<>();
 }
