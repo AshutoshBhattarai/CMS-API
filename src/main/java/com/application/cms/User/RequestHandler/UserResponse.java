@@ -1,6 +1,6 @@
 package com.application.cms.User.RequestHandler;
 
-import com.application.cms.ExtraModels.Role;
+import com.application.cms.ExtraModels.Models.Role;
 import lombok.*;
 
 import java.util.UUID;

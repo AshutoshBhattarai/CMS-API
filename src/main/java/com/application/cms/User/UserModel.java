@@ -1,6 +1,6 @@
 package com.application.cms.User;
 
-import com.application.cms.ExtraModels.Role;
+import com.application.cms.ExtraModels.Models.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
