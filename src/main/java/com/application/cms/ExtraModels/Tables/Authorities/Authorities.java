@@ -1,4 +1,4 @@
-package com.application.cms.ExtraModels.Tables;
+package com.application.cms.ExtraModels.Tables.Authorities;
 
 import com.application.cms.Student.StudentModel;
 import com.application.cms.Teacher.TeacherModel;

@@ -1,7 +1,8 @@
-package com.application.cms.ExtraModels.Tables;
+package com.application.cms.ExtraModels.Tables.Addresses;
 
 import com.application.cms.Student.StudentModel;
 import com.application.cms.Teacher.TeacherModel;
+import com.application.cms.User.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,16 +16,19 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "address")
-public class Address {
+public class AddressModel {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long address_id;
     String zipCode;
     String city;
     String state;
-    @ManyToMany(mappedBy = "student_address")
-    List<StudentModel> students = new ArrayList<>();
-    @ManyToMany(mappedBy = "teacher_address")
-    List<TeacherModel> teachers = new ArrayList<>();
+    @Builder.Default
+    @ManyToMany
+    @JoinTable(name = "user_address",
+            joinColumns = @JoinColumn(name = "address_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    List<UserModel> users = new ArrayList<>();
+
 }
