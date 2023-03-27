@@ -1,6 +1,7 @@
 package com.application.cms.APITest;
 
-import com.application.cms.User.UserModel;
+import com.application.cms.DBTables.Addresses.AddressModel;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,11 @@ public class TestController {
     private ResponseEntity<?> testMapper(@RequestBody String json) {
         try {
             System.out.println(json);
-            UserModel user = mapper.readValue(json, UserModel.class);
-            System.out.println(user);
+            JsonNode node = mapper.readTree(json);
+            AddressModel addressModel = mapper.readValue(String.valueOf(node.get("address"))
+                    , AddressModel.class);
+            System.out.println(addressModel.getCity());
+
             return ResponseEntity.ok("User Saved!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

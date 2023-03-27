@@ -1,4 +1,5 @@
-package com.application.cms.Teacher;
+package com.application.cms.Student;
+
 
 import com.application.cms.DBTables.Addresses.AddressModel;
 import com.application.cms.DBTables.Authorities.Authorities;
@@ -6,10 +7,9 @@ import com.application.cms.User.UserModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,21 +19,24 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Teachers")
-public class TeacherModel {
+@Getter
+@Setter
+@Table(name = "Students")
+public class StudentTable {
     @Id
     @GeneratedValue
-    @Column(name = "teacher_id")
-    UUID teacherId;
+    @Column(name = "student_id")
+    UUID studentId;
     String firstname;
     String lastname;
     String middlename;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    LocalDateTime dob;
+    LocalDate dob;
     @Builder.Default
-    LocalDateTime createdAt = LocalDateTime.now();
+    LocalDateTime createAt = LocalDateTime.now();
     @Builder.Default
-    LocalDateTime updatedAt = LocalDateTime.now();
+    LocalDateTime updateAt = LocalDateTime.now();
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserModel user;
@@ -47,9 +50,9 @@ public class TeacherModel {
     @JoinTable(name = "user_authorities",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private List<Authorities> teacher_authorities = new ArrayList<>();
-    @Transient
-    int age;
+    private List<Authorities> student_authorities = new ArrayList<>();
+
+
 
 
 }

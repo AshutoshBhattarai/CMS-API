@@ -1,4 +1,4 @@
-package com.application.cms.ExtraModels.Tables.Addresses;
+package com.application.cms.DBTables.Addresses;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

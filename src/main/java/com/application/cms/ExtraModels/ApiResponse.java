@@ -1,4 +1,4 @@
-package com.application.cms.ExtraModels.Models;
+package com.application.cms.ExtraModels;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,7 @@
 package com.application.cms.User;
 
-import com.application.cms.ExtraModels.Models.ApiResponse;
+import com.application.cms.ExtraModels.ApiResponse;
+import com.application.cms.User.RequestHandler.StudentSaveReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/user")
@@ -31,17 +30,17 @@ public class UserController {
     private ResponseEntity<?> saveUser(@RequestBody String user) {
         try {
             //userService.saveUser(user);
-            return ResponseEntity.ok("User saved Successfully");
+            return okResponse("User saved Successfully");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return errorResponse(e.getMessage());
         }
 
     }
 
     @PostMapping("/save/student")
-    private ResponseEntity<?> saveStudent(@RequestBody String user) {
+    private ResponseEntity<?> saveStudent(@RequestBody StudentSaveReq request) {
         try {
-            String msg = userService.saveUser(user);
+            String msg = userService.saveUser(request);
             return okResponse(msg);
         } catch (Exception e) {
             return errorResponse(e.getMessage());

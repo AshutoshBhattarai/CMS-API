@@ -1,8 +1,7 @@
 package com.application.cms.User;
 
-import com.application.cms.ExtraModels.Models.Role;
-import com.application.cms.ExtraModels.Tables.Addresses.AddressModel;
-import com.application.cms.Student.StudentModel;
+import com.application.cms.ExtraModels.Role;
+import com.application.cms.Student.StudentTable;
 import com.application.cms.Teacher.TeacherModel;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,25 +22,22 @@ public class UserModel {
     @Id
     @GeneratedValue
     UUID user_id;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     String username;
     @Column(nullable = false)
     String password;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     String email;
-    @Column(name = "phone_number",unique = true,nullable = false)
+    @Column(name = "phone_number", unique = true, nullable = false)
     Long phone;
-    @Builder.Default
     @Enumerated(EnumType.STRING)
-    Role role = Role.STUDENT;
-
+    Role role;
     @OneToMany(mappedBy = "user")
-    private Set<StudentModel> students ;
+    @ToString.Exclude
+    private Set<StudentTable> students;
     @OneToMany(mappedBy = "user")
-    private Set<TeacherModel> teachers ;
-    @ManyToMany(mappedBy = "users")
-    private Set<AddressModel> address ;
-
+    @ToString.Exclude
+    private Set<TeacherModel> teachers;
 
 
 }

@@ -9,5 +9,12 @@ import java.util.List;
 public class StudentService {
     @Autowired
     StudentRepo studentRepo;
-    public List<StudentModel> getStudents(){return studentRepo.findAll();}
+    public List<StudentTable> getStudents(){
+        //System.out.println(studentRepo.findAll());
+        return studentRepo.findAll();
+    }
+
+    public StudentTable saveStudent(StudentTable student){
+        return studentRepo.save(student);
+    }
 }

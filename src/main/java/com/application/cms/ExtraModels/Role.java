@@ -1,4 +1,4 @@
-package com.application.cms.ExtraModels.Models;
+package com.application.cms.ExtraModels;
 
 public enum Role {
     ADMIN,STUDENT,TEACHER,DEVELOPER

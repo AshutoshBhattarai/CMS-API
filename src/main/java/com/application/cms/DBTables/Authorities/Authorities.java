@@ -1,6 +1,6 @@
-package com.application.cms.ExtraModels.Tables.Authorities;
+package com.application.cms.DBTables.Authorities;
 
-import com.application.cms.Student.StudentModel;
+import com.application.cms.Student.StudentTable;
 import com.application.cms.Teacher.TeacherModel;
 import jakarta.persistence.*;
 
@@ -17,7 +17,7 @@ public class Authorities {
     String name;
 
     @ManyToMany(mappedBy = "student_authorities")
-    List<StudentModel> students = new ArrayList<>();
+    List<StudentTable> students = new ArrayList<>();
     @ManyToMany(mappedBy = "teacher_authorities")
     List<TeacherModel> teachers = new ArrayList<>();
 }
